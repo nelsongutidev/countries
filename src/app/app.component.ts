@@ -1,21 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { ThemeService } from './services/theme.service';
 
-const THEMES = ['cupcake', 'dark', 'light'];
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, NavigationComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  theme = 'cupcake';
-
-  toggleTheme() {
-    const restOfThemes = THEMES.filter((theme) => theme !== this.theme);
-    const randomTheme =
-      restOfThemes[Math.floor(Math.random() * restOfThemes.length)];
-    this.theme = randomTheme;
-  }
+  themeService = inject(ThemeService);
+  theme = this.themeService.theme;
 }
