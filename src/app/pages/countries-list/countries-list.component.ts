@@ -1,0 +1,24 @@
+import { Component, Signal, effect, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CountriesService } from 'src/app/services/countries.service';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { CountryCardComponent } from 'src/app/components/country-card/country-card.component';
+
+@Component({
+  selector: 'app-countries-list',
+  standalone: true,
+  imports: [CommonModule, CountryCardComponent],
+  templateUrl: './countries-list.component.html',
+  styles: [],
+})
+export class CountriesListComponent {
+  countriesService = inject(CountriesService);
+
+  countries = toSignal(this.countriesService.getAllCountries());
+
+  constructor() {
+    effect(() => {
+      console.log('this.countries(): ', this.countries());
+    });
+  }
+}
