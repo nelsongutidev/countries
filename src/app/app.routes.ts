@@ -8,4 +8,11 @@ export const routes: Routes = [
         (m) => m.CountriesListComponent
       ),
   },
+  {
+    path: 'country/:id',
+    loadComponent: () =>
+      import('./pages/country-detail/country-detail.component').then(
+        (m) => m.CountryDetailComponent
+      ),
+  },
 ];

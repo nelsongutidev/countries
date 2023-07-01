@@ -22,8 +22,12 @@
     />
   </div>
 
-  <section class="flex flex-wrap gap-4 gap-y-4">
-    <app-country-card *ngFor="let country of countries()" [country]="country">
+  <section class="flex flex-wrap gap-8 gap-y-8">
+    <app-country-card
+      *ngFor="let country of countries()"
+      [country]="country"
+      [routerLink]="['/country', country.cca2]"
+    >
     </app-country-card>
   </section>
 </main>
