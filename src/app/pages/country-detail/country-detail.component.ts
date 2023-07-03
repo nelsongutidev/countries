@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { CountriesService } from 'src/app/services/countries.service';
 
 @Component({
   selector: 'app-country-detail',
@@ -10,7 +11,16 @@ import { RouterModule } from '@angular/router';
   styles: [],
 })
 export class CountryDetailComponent {
+  countriesService = inject(CountriesService);
+  country = this.countriesService.selectedCountry;
+  @Input() id = '';
   ngOnInit(): void {
-    console.log('here');
+    console.log('here', this.id);
+    this.countriesService.getCountry(this.id);
+  }
+
+  ngOnDestroy() {
+    console.log('destroyed');
+    this.countriesService.selectedCountry.set(null);
   }
 }

@@ -1,15 +1,30 @@
-import { Injectable } from '@angular/core';
+import { Injectable, effect, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { shareReplay } from 'rxjs';
 
 const baseURL = 'https://restcountries.com/v3.1';
 @Injectable({
   providedIn: 'root',
 })
 export class CountriesService {
-  constructor(private readonly httpClient: HttpClient) {}
+  constructor(private readonly httpClient: HttpClient) {
+    effect(() => {
+      this.countries();
+      console.log('his.countries(): ', this.countries());
+    });
+  }
+  private countries$ = this.httpClient
+    .get<any[]>(`${baseURL}/all`) //type this
+    .pipe(shareReplay(1));
 
-  getAllCountries(): Observable<any[]> {
-    return this.httpClient.get<[]>(`${baseURL}/all`);
+  countries = toSignal(this.countries$, { initialValue: [] });
+  selectedCountry = signal<any>(null);
+
+  getCountry(id: string) {
+    console.log('id: ', id);
+    const selectedCountry = this.countries().find(({ cca2 }) => cca2 === id);
+    console.log('selectedCountry : ', selectedCountry);
+    this.selectedCountry.set(selectedCountry);
   }
 }

@@ -1,5 +1,7 @@
 <main class="md:px-16">
-  <div class="form-control w-full max-w-xs my-12 flex justify-center relative">
+  <div
+    class="form-control w-full max-w-xs my-12 flex justify-center relative md:ml-0 ml-4"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -22,11 +24,11 @@
     />
   </div>
 
-  <section class="flex flex-wrap gap-8 gap-y-8">
+  <section class="flex flex-wrap gap-8 gap-y-8 justify-center">
     <app-country-card
       *ngFor="let country of countries()"
       [country]="country"
-      [routerLink]="['/country', country.cca2]"
+      [routerLink]="['/countries', country.cca2]"
     >
     </app-country-card>
   </section>

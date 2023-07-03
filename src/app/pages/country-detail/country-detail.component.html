@@ -1,1 +1,12 @@
-<a routerLink="/">Back</a>
+<div class="hero">
+  <div class="hero-content flex-col lg:flex-row">
+    <img [src]="country()?.flags?.png" class="max-w-sm rounded-lg shadow-2xl" />
+    <div>
+      <h1 class="text-5xl font-bold">{{ country()?.name?.common }}</h1>
+      <p class="py-6">
+        {{ country()?.name?.common }}
+      </p>
+      <button class="btn btn-primary">Get Started</button>
+    </div>
+  </div>
+</div>

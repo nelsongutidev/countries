@@ -14,12 +14,5 @@ import { RouterModule } from '@angular/router';
 })
 export class CountriesListComponent {
   countriesService = inject(CountriesService);
-
-  countries = toSignal(this.countriesService.getAllCountries());
-
-  constructor() {
-    effect(() => {
-      console.log('this.countries(): ', this.countries());
-    });
-  }
+  countries = this.countriesService.countries;
 }
