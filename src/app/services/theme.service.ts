@@ -7,5 +7,5 @@ export const THEMES = ['cupcake', 'dark', 'light'];
 export class ThemeService {
   constructor() {}
 
-  theme = signal('cupcake');
+  theme = signal('light');
 }

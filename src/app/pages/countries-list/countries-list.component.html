@@ -18,15 +18,17 @@
     </svg>
 
     <input
+      #searchCountryInput
       type="text"
       placeholder="Search for a country..."
       class="input input-bordered w-full max-w-xs px-12"
+      (input)="search(searchCountryInput.value)"
     />
   </div>
 
-  <section class="flex flex-wrap gap-8 gap-y-8 justify-center">
+  <section class="flex flex-wrap gap-16 gap-y-16 justify-center">
     <app-country-card
-      *ngFor="let country of countries()"
+      *ngFor="let country of filteredCountries()"
       [country]="country"
       [routerLink]="['/countries', country.cca2]"
     >

@@ -22,9 +22,7 @@ export class CountriesService {
   selectedCountry = signal<any>(null);
 
   getCountry(id: string) {
-    console.log('id: ', id);
     const selectedCountry = this.countries().find(({ cca2 }) => cca2 === id);
-    console.log('selectedCountry : ', selectedCountry);
     this.selectedCountry.set(selectedCountry);
   }
 }
