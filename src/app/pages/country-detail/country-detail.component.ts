@@ -15,12 +15,10 @@ export class CountryDetailComponent {
   country = this.countriesService.selectedCountry;
   @Input() id = '';
   ngOnInit(): void {
-    console.log('here', this.id);
     this.countriesService.getCountry(this.id);
   }
 
   ngOnDestroy() {
-    console.log('destroyed');
     this.countriesService.selectedCountry.set(null);
   }
 }

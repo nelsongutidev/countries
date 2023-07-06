@@ -1,12 +1,13 @@
-<div class="hero">
-  <div class="hero-content flex-col lg:flex-row">
-    <img [src]="country()?.flags?.png" class="max-w-sm rounded-lg shadow-2xl" />
+<div class="">
+  <button class="btn md:ml-16 ml-4 my-8" routerLink="/">Back</button>
+
+  <div class="flex justify-center gap-8">
+    <img [src]="country()?.flags?.png" class="h-48 rounded-lg shadow-2xl" />
     <div>
       <h1 class="text-5xl font-bold">{{ country()?.name?.common }}</h1>
       <p class="py-6">
         {{ country()?.name?.common }}
       </p>
-      <button class="btn btn-primary">Get Started</button>
     </div>
   </div>
 </div>
