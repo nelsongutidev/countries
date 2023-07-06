@@ -1,4 +1,4 @@
-import { Injectable, effect, signal } from '@angular/core';
+import { Injectable, computed, effect, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { shareReplay } from 'rxjs';
@@ -19,10 +19,10 @@ export class CountriesService {
     .pipe(shareReplay(1));
 
   countries = toSignal(this.countries$, { initialValue: [] });
-  selectedCountry = signal<any>(null);
-
-  getCountry(id: string) {
-    const selectedCountry = this.countries().find(({ cca2 }) => cca2 === id);
-    this.selectedCountry.set(selectedCountry);
-  }
+  selectedCountryCode = signal<string>('');
+  selectedCountry = computed(() => {
+    return this.countries().find(
+      ({ cca2 }) => cca2 === this.selectedCountryCode()
+    );
+  });
 }

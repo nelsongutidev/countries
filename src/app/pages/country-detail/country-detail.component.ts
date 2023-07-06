@@ -15,10 +15,6 @@ export class CountryDetailComponent {
   country = this.countriesService.selectedCountry;
   @Input() id = '';
   ngOnInit(): void {
-    this.countriesService.getCountry(this.id);
-  }
-
-  ngOnDestroy() {
-    this.countriesService.selectedCountry.set(null);
+    this.countriesService.selectedCountryCode.set(this.id);
   }
 }
