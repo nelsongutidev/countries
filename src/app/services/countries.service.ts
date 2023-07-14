@@ -11,6 +11,8 @@ export class CountriesService {
   constructor(private readonly httpClient: HttpClient) {
     effect(() => {
       this.countries();
+      this.selectedCountry();
+      console.log('this.selectedCountry(): ', this.selectedCountry());
       console.log('his.countries(): ', this.countries());
     });
   }
@@ -22,7 +24,7 @@ export class CountriesService {
   selectedCountryCode = signal<string>('');
   selectedCountry = computed(() => {
     return this.countries().find(
-      ({ cca2 }) => cca2 === this.selectedCountryCode()
+      ({ cca3 }) => cca3 === this.selectedCountryCode()
     );
   });
 }

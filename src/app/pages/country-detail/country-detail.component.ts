@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CountriesService } from 'src/app/services/countries.service';
@@ -13,8 +13,23 @@ import { CountriesService } from 'src/app/services/countries.service';
 export class CountryDetailComponent {
   countriesService = inject(CountriesService);
   country = this.countriesService.selectedCountry;
+  currencies = computed(() => {
+    const keys = Object.keys(this.country()?.currencies || {});
+    if (keys.length === 0) {
+      return 'No currencies found';
+    }
+    return keys.map((key) => this.country()?.currencies[key].name);
+  });
+  languages = computed(() => {
+    const keys = Object.keys(this.country()?.languages || {});
+    if (keys.length === 0) {
+      return 'No languages found';
+    }
+    return keys.map((key) => this.country()?.languages[key]);
+  });
+
   @Input() id = '';
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.countriesService.selectedCountryCode.set(this.id);
   }
 }
