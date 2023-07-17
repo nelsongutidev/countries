@@ -12,11 +12,16 @@ import { RouterLink } from '@angular/router';
 export class NavigationComponent {
   themeService = inject(ThemeService);
   theme = this.themeService.theme;
+  themes = THEMES;
 
   toggleTheme() {
     const restOfThemes = THEMES.filter((theme) => theme !== this.theme());
     const randomTheme =
       restOfThemes[Math.floor(Math.random() * restOfThemes.length)];
     this.theme.set(randomTheme);
+  }
+
+  onThemeChange(event: any) {
+    this.themeService.theme.set(event?.target.value);
   }
 }
