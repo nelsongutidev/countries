@@ -1,12 +1,12 @@
 import { Component, Input, computed, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CountriesService } from 'src/app/services/countries.service';
 
 @Component({
   selector: 'app-country-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NgOptimizedImage],
   templateUrl: './country-detail.component.html',
   styles: [],
 })
