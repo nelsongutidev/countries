@@ -3,9 +3,12 @@
 
   <div class="flex justify-center gap-16 flex-wrap">
     <img
-      [src]="country()?.flags?.svg"
+      *ngIf="country()?.flags?.svg"
+      [ngSrc]="country()?.flags?.svg"
       [alt]="country()?.flags?.alt"
       class="rounded-lg shadow-2xl flex-1 w-full max-w-2xl h-fit"
+      width="500"
+      height="300"
     />
 
     <section class="flex-1">
@@ -26,7 +29,8 @@
             >{{ country()?.subregion }}
           </p>
           <p>
-            <span class="font-bold">Capital:</span> {{ country()?.capital[0] }}
+            <span class="font-bold">Capital:</span>
+            {{ country()?.capital?.[0] }}
           </p>
         </div>
         <div class="space-y-2">
