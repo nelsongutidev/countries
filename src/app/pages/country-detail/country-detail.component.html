@@ -2,13 +2,11 @@
   <button class="btn md:ml-16 ml-4 my-8" routerLink="/">Back</button>
 
   <div class="flex justify-center gap-16 flex-wrap">
-    <ng-container *ngIf="country()?.flags?.svg">
-      <img
-        [src]="country()?.flags?.svg"
-        [alt]="country()?.flags?.alt"
-        class="rounded-lg shadow-2xl flex-1 w-full max-w-2xl h-fit"
-      />
-    </ng-container>
+    <img
+      [src]="country()?.flags?.svg"
+      [alt]="country()?.flags?.alt"
+      class="rounded-lg shadow-2xl flex-1 w-full max-w-2xl h-fit"
+    />
 
     <section class="flex-1">
       <h3 class="text-5xl font-bold pb-6">{{ country()?.name?.common }}</h3>
