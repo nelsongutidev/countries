@@ -6,7 +6,7 @@ import { CountriesService } from 'src/app/services/countries.service';
 @Component({
   selector: 'app-country-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, NgOptimizedImage],
+  imports: [CommonModule, RouterModule],
   templateUrl: './country-detail.component.html',
   styles: [],
 })
