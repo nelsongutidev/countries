@@ -1,29 +1,40 @@
 <main class="md:px-16">
-  <div
-    class="form-control w-full max-w-xs my-12 flex justify-center relative md:ml-0 ml-4"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="currentColor"
-      class="w-6 h-6 absolute ml-4"
+  <div class="flex justify-between items-center">
+    <div
+      class="form-control w-full max-w-xs my-12 flex justify-center relative md:ml-0 ml-4"
     >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-      />
-    </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6 absolute ml-4"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+        />
+      </svg>
 
-    <input
-      #searchCountryInput
-      type="text"
-      placeholder="Search for a country..."
-      class="input input-bordered w-full max-w-xs px-12"
-      (input)="search(searchCountryInput.value)"
-    />
+      <input
+        #searchCountryInput
+        type="text"
+        placeholder="Search for a country..."
+        class="input input-bordered w-full max-w-xs px-12"
+        (input)="search(searchCountryInput.value)"
+      />
+    </div>
+    <select
+      id="themeSelector"
+      class="select select-bordered select-sm w-full max-w-xs"
+      (input)="onRegionChange($event)"
+    >
+      <option *ngFor="let region of regions" [value]="region">
+        {{ region }}
+      </option>
+    </select>
   </div>
 
   <section class="flex flex-wrap gap-16 gap-y-16 justify-center">

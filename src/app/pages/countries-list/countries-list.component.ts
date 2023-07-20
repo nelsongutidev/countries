@@ -22,18 +22,34 @@ export class CountriesListComponent {
   countriesService = inject(CountriesService);
   countries = this.countriesService.countries;
   searchTerm = signal<string>('');
-  filteredCountries = computed(() =>
-    this.countries().filter((c) =>
+  selectedRegion = signal<string>('All');
+  filteredCountries = computed(() => {
+    if (this.selectedRegion() !== 'All') {
+      return this.countries().filter(
+        (c) =>
+          c.region === this.selectedRegion() &&
+          c.name.common.toLowerCase().includes(this.searchTerm().toLowerCase())
+      );
+    }
+
+    return this.countries().filter((c) =>
       c.name.common.toLowerCase().includes(this.searchTerm().toLowerCase())
-    )
-  );
+    );
+  });
+  regions: string[] = [
+    'All',
+    'Africa',
+    'Americas',
+    'Asia',
+    'Europe',
+    'Oceania',
+  ];
 
   search(term: any) {
-    console.log('search', term);
     this.searchTerm.set(term);
   }
 
-  filterByRegion(region: string) {
-    console.log('region: ', region);
+  onRegionChange(region: any) {
+    this.selectedRegion.set(region?.target.value);
   }
 }
