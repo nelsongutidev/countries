@@ -1,7 +1,7 @@
 import { Injectable, computed, effect, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { shareReplay } from 'rxjs';
+import { retry, shareReplay } from 'rxjs';
 
 const baseURL = 'https://restcountries.com/v3.1';
 @Injectable({
@@ -18,7 +18,7 @@ export class CountriesService {
   }
   private countries$ = this.httpClient
     .get<any[]>(`${baseURL}/all`) //type this
-    .pipe(shareReplay(1));
+    .pipe(shareReplay(1), retry(3));
 
   countries = toSignal(this.countries$, { initialValue: [] });
   selectedCountryCode = signal<string>('');
