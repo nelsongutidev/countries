@@ -1,11 +1,4 @@
-import {
-  Component,
-  Signal,
-  computed,
-  effect,
-  inject,
-  signal,
-} from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CountriesService } from 'src/app/services/countries.service';
 import { CountryCardComponent } from 'src/app/components/country-card/country-card.component';

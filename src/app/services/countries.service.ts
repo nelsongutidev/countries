@@ -9,12 +9,12 @@ const baseURL = 'https://restcountries.com/v3.1';
 })
 export class CountriesService {
   constructor(private readonly httpClient: HttpClient) {
-    effect(() => {
-      this.countries();
-      this.selectedCountry();
-      console.log('this.selectedCountry(): ', this.selectedCountry());
-      console.log('his.countries(): ', this.countries());
-    });
+    // effect(() => {
+    //   this.countries();
+    //   this.selectedCountry();
+    //   console.log('this.selectedCountry(): ', this.selectedCountry());
+    //   console.log('his.countries(): ', this.countries());
+    // });
   }
   private countries$ = this.httpClient
     .get<any[]>(`${baseURL}/all`) //type this
