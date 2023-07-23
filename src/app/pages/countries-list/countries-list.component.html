@@ -1,7 +1,7 @@
 <main class="md:px-16">
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center flex-wrap md:mt-8 mt-2">
     <div
-      class="form-control w-full max-w-xs my-12 flex justify-center relative md:ml-0 ml-4"
+      class="form-control w-full max-w-xs my-4 flex justify-center relative md:ml-0 ml-4"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@
     </div>
     <select
       id="themeSelector"
-      class="select select-bordered select-sm w-full max-w-xs"
+      class="select select-bordered w-full max-w-xs md:ml-0 ml-4 my-2"
       (input)="onRegionChange($event)"
     >
       <option *ngFor="let region of regions" [value]="region">
@@ -37,7 +37,7 @@
     </select>
   </div>
 
-  <section class="flex flex-wrap gap-16 gap-y-16 justify-center">
+  <section class="flex flex-wrap gap-16 gap-y-16 justify-center md:mt-12 mt-4">
     <app-country-card
       *ngFor="let country of filteredCountries()"
       [country]="country"
