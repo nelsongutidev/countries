@@ -39,11 +39,11 @@ export const THEMES = [
 export class ThemeService {
   localStorageService = inject(LocalStorageService);
 
-  theme = signal(this.localStorageService.getItem(DATA_KEY) || 'light');
+  selectedTheme = signal(this.localStorageService.getItem(DATA_KEY) || 'light');
 
   constructor() {
     effect(() => {
-      this.localStorageService.setItem(DATA_KEY, this.theme());
+      this.localStorageService.setItem(DATA_KEY, this.selectedTheme());
     });
   }
 }

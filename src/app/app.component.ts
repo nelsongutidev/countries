@@ -12,5 +12,5 @@ import { ThemeService } from './services/theme.service';
 })
 export class AppComponent {
   themeService = inject(ThemeService);
-  theme = this.themeService.theme;
+  selectedTheme = this.themeService.selectedTheme;
 }
