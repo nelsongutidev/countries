@@ -1,41 +1,49 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, effect, inject, signal } from '@angular/core';
+import { LocalStorageService } from './local-storage.service';
 
+export const DATA_KEY = 'countries-theme';
 export const THEMES = [
   'light',
   'dark',
   'cupcake',
-  'bumblebee',
-  'emerald',
+  // 'bumblebee',
+  // 'emerald',
   'corporate',
   'synthwave',
   'retro',
   'cyberpunk',
   'valentine',
   'halloween',
-  'garden',
-  'forest',
+  // 'garden',
+  // 'forest',
   'aqua',
-  'lofi',
+  // 'lofi',
   'pastel',
-  'fantasy',
+  // 'fantasy',
   'wireframe',
   'black',
   'luxury',
   'dracula',
-  'cmyk',
-  'autumn',
+  // 'cmyk',
+  // 'autumn',
   'business',
-  'acid',
-  'lemonade',
+  // 'acid',
+  // 'lemonade',
   'night',
   'coffee',
-  'wiqua',
+  // 'wiqua',
 ];
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
-  constructor() {}
+  localStorageService = inject(LocalStorageService);
 
-  theme = signal('light');
+  theme = signal(this.localStorageService.getItem(DATA_KEY) || 'light');
+
+  constructor() {
+    effect(() => {
+      this.localStorageService.setItem(DATA_KEY, this.theme());
+    });
+  }
 }
