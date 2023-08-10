@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Project Details
 
-This project was made using Angular Signals for state managemen and DaisyUi for styling.
+This project was made using Angular Signals for state management and DaisyUi for styling.
 
 ## Description
 
