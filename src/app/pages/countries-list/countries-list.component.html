@@ -39,10 +39,10 @@
 
   <section class="flex flex-wrap gap-16 gap-y-16 justify-center md:mt-12 mt-4">
     <app-country-card
+      class="w-80 h-full"
       *ngFor="let country of filteredCountries()"
       [country]="country"
       [routerLink]="['/countries', country.cca3]"
-    >
-    </app-country-card>
+    />
   </section>
 </main>

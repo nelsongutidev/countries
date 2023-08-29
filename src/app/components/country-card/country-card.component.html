@@ -8,10 +8,11 @@
       alt="test"
     />
   </figure>
-  <div class="card-body">
-    <h2 class="card-title mb-2">{{ country.name.common }}</h2>
+  <div class="card-body text-base h-52">
+    <h2 class="card-title mb-1">{{ country.name.common }}</h2>
     <p class="font-extralight">
-      <span class="font-semibold">Population: </span>{{ country.population }}
+      <span class="font-semibold">Population: </span
+      >{{ country.population | number }}
     </p>
     <p class="font-extralight">
       <span class="font-semibold">Region: </span> {{ country.region }}
