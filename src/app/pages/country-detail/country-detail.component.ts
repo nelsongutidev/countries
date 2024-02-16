@@ -1,7 +1,16 @@
-import { Component, Input, computed, inject } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import {
+  Component,
+  Input,
+  computed,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CountriesService } from 'src/app/services/countries.service';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-country-detail',
@@ -12,7 +21,13 @@ import { CountriesService } from 'src/app/services/countries.service';
 })
 export class CountryDetailComponent {
   countriesService = inject(CountriesService);
-  country = this.countriesService.selectedCountry;
+
+  id = input();
+  country = toSignal(
+    toObservable(this.id).pipe(
+      switchMap((id) => this.countriesService.getCountryByCca3(id as any))
+    )
+  );
   currencies = computed(() => {
     const keys = Object.keys(this.country()?.currencies || {});
     if (keys.length === 0) {
@@ -27,9 +42,4 @@ export class CountryDetailComponent {
     }
     return keys.map((key) => this.country()?.languages[key]);
   });
-
-  @Input() id = '';
-  ngOnChanges(): void {
-    this.countriesService.selectedCountryCode.set(this.id);
-  }
 }

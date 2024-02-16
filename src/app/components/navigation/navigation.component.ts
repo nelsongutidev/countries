@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { THEMES, ThemeService } from 'src/app/services/theme.service';
 import { RouterLink } from '@angular/router';
