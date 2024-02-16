@@ -50,13 +50,11 @@
       <div class="flex flex-wrap gap-4">
         <p class="font-bold flex items-center">Border Countries:</p>
         <div class="flex flex-wrap gap-4">
-          <button
-            *ngFor="let border of country()?.borders"
-            class="btn"
-            [routerLink]="['/countries', border]"
-          >
+          @for (border of country()?.borders; track border) {
+          <button class="btn" [routerLink]="['/countries', border]">
             {{ border }}
           </button>
+          }
         </div>
       </div>
     </section>

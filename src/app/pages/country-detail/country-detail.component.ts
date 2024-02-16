@@ -6,7 +6,6 @@ import {
   input,
   signal,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CountriesService } from 'src/app/services/countries.service';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
@@ -15,7 +14,7 @@ import { switchMap } from 'rxjs';
 @Component({
   selector: 'app-country-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [RouterModule],
   templateUrl: './country-detail.component.html',
   styles: [],
 })

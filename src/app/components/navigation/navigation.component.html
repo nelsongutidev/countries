@@ -10,13 +10,11 @@
       class="select select-bordered select-sm w-full max-w-xs"
       (input)="onThemeChange($event)"
     >
-      <option
-        *ngFor="let theme of themes"
-        [value]="theme"
-        [selected]="theme === selectedTheme()"
-      >
+      @for (theme of themes; track theme) {
+      <option [value]="theme" [selected]="theme === selectedTheme()">
         {{ theme }}
       </option>
+      }
     </select>
   </div>
 </div>
