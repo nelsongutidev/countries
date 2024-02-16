@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CountriesService } from 'src/app/services/countries.service';
 import { CountryCardComponent } from 'src/app/components/country-card/country-card.component';
 import { RouterModule } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-countries-list',
@@ -13,7 +14,10 @@ import { RouterModule } from '@angular/router';
 })
 export class CountriesListComponent {
   countriesService = inject(CountriesService);
-  countries = this.countriesService.countries;
+  countries = toSignal(this.countriesService.getCountries(), {
+    initialValue: [],
+  });
+
   searchTerm = signal<string>('');
   selectedRegion = signal<string>('All');
   filteredCountries = computed(() => {
