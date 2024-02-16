@@ -1,5 +1,4 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CountriesService } from 'src/app/services/countries.service';
 import { CountryCardComponent } from 'src/app/components/country-card/country-card.component';
 import { RouterModule } from '@angular/router';
@@ -8,7 +7,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'app-countries-list',
   standalone: true,
-  imports: [CommonModule, CountryCardComponent, RouterModule],
+  imports: [CountryCardComponent, RouterModule],
   templateUrl: './countries-list.component.html',
   styles: [],
 })

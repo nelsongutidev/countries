@@ -31,18 +31,21 @@
       class="select select-bordered w-full max-w-xs md:ml-0 ml-4 my-2"
       (input)="onRegionChange($event)"
     >
-      <option *ngFor="let region of regions" [value]="region">
+      @for (region of regions; track region) {
+      <option [value]="region">
         {{ region }}
       </option>
+      }
     </select>
   </div>
 
   <section class="flex flex-wrap gap-16 gap-y-16 justify-center md:mt-12 mt-4">
+    @for (country of filteredCountries(); track country) {
     <app-country-card
       class="w-80 h-full"
-      *ngFor="let country of filteredCountries()"
       [country]="country"
       [routerLink]="['/countries', country.cca3]"
     />
+    }
   </section>
 </main>
