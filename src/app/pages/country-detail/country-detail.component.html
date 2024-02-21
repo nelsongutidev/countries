@@ -47,6 +47,7 @@
           </p>
         </div>
       </div>
+      @if (country()?.borders.length) {
       <div class="flex flex-wrap gap-4">
         <p class="font-bold flex items-center">Border Countries:</p>
         <div class="flex flex-wrap gap-4">
@@ -57,6 +58,7 @@
           }
         </div>
       </div>
+      }
     </section>
   </div>
 </div>
