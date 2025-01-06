@@ -5,11 +5,10 @@ import { RouterModule } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-countries-list',
-  standalone: true,
-  imports: [CountryCardComponent, RouterModule],
-  templateUrl: './countries-list.component.html',
-  styles: [],
+    selector: 'app-countries-list',
+    imports: [CountryCardComponent, RouterModule],
+    templateUrl: './countries-list.component.html',
+    styles: []
 })
 export class CountriesListComponent {
   countriesService = inject(CountriesService);
