@@ -3,10 +3,9 @@ import { THEMES, ThemeService } from 'src/app/services/theme.service';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-navigation',
-  standalone: true,
-  imports: [RouterLink],
-  templateUrl: './navigation.component.html',
+    selector: 'app-navigation',
+    imports: [RouterLink],
+    templateUrl: './navigation.component.html'
 })
 export class NavigationComponent {
   themeService = inject(ThemeService);

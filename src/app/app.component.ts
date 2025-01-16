@@ -4,10 +4,9 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { ThemeService } from './services/theme.service';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, NavigationComponent],
-  templateUrl: './app.component.html',
+    selector: 'app-root',
+    imports: [RouterOutlet, NavigationComponent],
+    templateUrl: './app.component.html'
 })
 export class AppComponent {
   themeService = inject(ThemeService);
