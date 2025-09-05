@@ -12,10 +12,10 @@ import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { switchMap } from 'rxjs';
 
 @Component({
-    selector: 'app-country-detail',
-    imports: [RouterModule],
-    templateUrl: './country-detail.component.html',
-    styles: []
+  selector: 'app-country-detail',
+  imports: [RouterModule],
+  templateUrl: './country-detail.component.html',
+  styles: [],
 })
 export class CountryDetailComponent {
   countriesService = inject(CountriesService);

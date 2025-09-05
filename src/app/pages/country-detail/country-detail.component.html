@@ -10,7 +10,7 @@
       />
     </figure>
 
-    <section class="flex-1">
+    <section class="flex-1 my-16">
       <h3 class="text-5xl font-bold pb-6">{{ country()?.name?.common }}</h3>
       <div class="flex pb-6 flex-wrap gap-8 font-extralight">
         <div class="space-y-2">
@@ -41,9 +41,11 @@
             <span class="font-bold">Currencies:</span>
             {{ currencies() }}
           </p>
-          <p>
-            <span class="font-bold">Languages:</span>
-            {{ languages() }}
+          <p class="flex flex-wrap">
+            <span class="font-bold px-1">Languages: </span>
+            @for(language of languages(); track $index;) {
+            <span>{{ $last ? language : language + ", " }}</span>
+            }
           </p>
         </div>
       </div>
