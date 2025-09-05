@@ -12,7 +12,9 @@ export class CountriesService {
 
   getCountries() {
     return this.httpClient
-      .get<any[]>(`${baseURL}/all`) //type this
+      .get<any[]>(
+        `${baseURL}/all?fields=name,flags,population,subregion,region,capital,cca3`
+      ) //type thishttps://restcountries.com/v3.1/all?fields=
       .pipe(shareReplay(1), retry(3));
   }
 
